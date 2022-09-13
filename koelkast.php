@@ -38,12 +38,10 @@ $pdo = new PDO($dsn, $user, $password);
         ?>
 
         <a href="index.php" name=""></a>
-        <h1 class="title"><?php echo $row['title'];?></h1>
-        <h3 class="prijs">prijs: <?php echo $row['prijs'];?></h3>
-        <h4 class="awards">Awards: <?php echo $row['has_won_awards'];?></h4>
-        <h4 class="country">Country:  <?php echo $row['country'];?></h4>
-        <h4 class="taal">Language:  <?php echo $row['spoken_in_language'];?></h4>
-        <h4 class="omsch"><?php echo $row['summary'];?></h4>
-
+        <h2 class="title"><?php echo $row['title'];?></h2>
+        <h2 class="prijs">€<?php echo $row['prijs'];?></h2>
+        <h2 class="energie">energie label <?php echo $row['energie'];?></h2>
+        <h2 class="inhoud">inhoud:  <?php echo $row['inhoud'];?>L</h2>
+        <img src="<?php echo $row['foto'] ?>">
     </div>
 </body>
