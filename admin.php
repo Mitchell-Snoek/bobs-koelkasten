@@ -19,20 +19,40 @@ $pdo = new PDO($dsn, $user, $password);
 ?>
 <header>
     <title>
-        home page
+        admin page
     </title>
-    <link href="style_home.css" rel="stylesheet">
+    <link href="css/style_home.css" rel="stylesheet">
 </header>
 <body>
-    <!-- log out button -->
-    <form method="post" class='uitloggen'>
-        <input type="submit" name="uitloggen" value="uitloggen">
+    <nav>
+        <ul>
+            <li><a href="index.php" class="left" style="color: black; text-decoration: none;"><h1>Home</h1></a></li>
+            <li><a href="logout.php" class="right" style="color: black; text-decoration: none;"><h1>logout</h1></a></li>
+        </ul>
+    </nav>
+    <form method="post" style="margin: 50px;">
+        <input type="submit" name="toevoegen" value="toevoegen">
+        <input type="submit" name="aanpassen" value="aanpassen">
+        <input type="submit" name="verwijderen" value="verwijderen">
+        <input type="submit" name="reparaties" value="reparaties">
     </form>
 
 <?php
-//log out
-if (isset($_POST['uitloggen'])) {
-    header('Refresh: 0; URL = index.php');
+
+if (isset($_POST['verwijderen'])) {
+    header('Refresh: 0; URL = delete.php');
+    exit();
+}
+if (isset($_POST['aanpassen'])) {
+    header('Refresh: 0; URL = edit.php');
+    exit();
+}
+if (isset($_POST['toevoegen'])) {
+    header('Refresh: 0; URL = add.php');
+    exit();
+}
+if (isset($_POST['reparaties'])) {
+    header('Refresh: 0; URL = reparatie-overzicht.php');
     exit();
 }
 ?>

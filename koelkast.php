@@ -12,7 +12,7 @@ $pdo = new PDO($dsn, $user, $password);
 ?>
 <header>
     <title>
-        home page
+        koelkast page
     </title>
     <link href="css/style_home.css" rel="stylesheet">
 </header>

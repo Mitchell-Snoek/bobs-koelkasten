@@ -20,7 +20,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
 <header>
     <title>
-        edit page
+        reparatie overzicht page
     </title>
     <link href="css/style_home.css" rel="stylesheet">
 </header>
@@ -34,13 +34,13 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     </nav>
 
     <div class="insert" style="text-align: center;">
-    <h1>selecteer een koelkast om aan te passen</h1>
+    <h1>reparaties</h1>
     <?php
 
-    $stmt = $pdo->query('SELECT * FROM koelkast');
+    $stmt = $pdo->query('SELECT * FROM reparaties');
     while ($row = $stmt->fetch()) {
-        ?><a class="koelkasten" href="edits.php?id=<?php echo $row["id"] ?>"><?php
-        echo "<h3>" . $row['title'] . "\n", '</h3><br>'; ?></a><br><br>
+        ?><a class="koelkasten" href="reparatie-info.php?id=<?php echo $row["id"] ?>"><?php
+        echo "<h3>" . $row['naam'] . "\n", '</h3><h3>' . $row['adres'] . '</h3><h3>' . $row['koelkast'] . '</h3><h3>' . $row['probleem'] . '</h3>'; ?></a><br><br>
         <?php
     }
     ?>

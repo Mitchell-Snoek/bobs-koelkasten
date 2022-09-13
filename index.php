@@ -33,7 +33,7 @@ $pdo = new PDO($dsn, $user, $password);
         $stmt = $pdo->query('SELECT * FROM koelkast');
         while ($row = $stmt->fetch()) {
             ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
-            echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>prijs: €' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+            echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
             <?php
         }
         ?>
