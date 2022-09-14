@@ -28,13 +28,57 @@ $pdo = new PDO($dsn, $user, $password);
     </nav>
 
     <div>
+        <form method="post">
+            <label for="sort">sorteren</label>
+            <select name="sort" id="sort">
+                <option value="niet">niet</option>
+                <option value="prijs">prijs</option>
+                <option value="inhoud">inhoud</option>
+                <option value="energie">energie label</option>
+            </select>
+            <input type="submit"></input>
+        </form>
         <?php
         //echo koelkasten
-        $stmt = $pdo->query('SELECT * FROM koelkast');
-        while ($row = $stmt->fetch()) {
-            ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
-            echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
-            <?php
+        if (isset($_POST['sort'])) {
+            $sort = $_POST['sort'];
+            echo $sort;
+            if ($sort == "niet") {
+                $stmt = $pdo->query('SELECT * FROM koelkast');
+                while ($row = $stmt->fetch()) {
+                    ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
+                    echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+                    <?php
+                }
+            } elseif ($sort == "prijs") {
+                $stmt = $pdo->query('SELECT * FROM koelkast ORDER BY prijs');
+                while ($row = $stmt->fetch()) {
+                    ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
+                    echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+                    <?php
+                }
+            } elseif ($sort == "inhoud") {
+                $stmt = $pdo->query('SELECT * FROM koelkast ORDER BY inhoud');
+                while ($row = $stmt->fetch()) {
+                    ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
+                    echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+                    <?php
+                }
+            } elseif ($sort == "energie") {
+                $stmt = $pdo->query('SELECT * FROM koelkast ORDER BY energie');
+                while ($row = $stmt->fetch()) {
+                    ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
+                    echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+                    <?php
+                }
+            }
+        } else {
+            $stmt = $pdo->query('SELECT * FROM koelkast');
+            while ($row = $stmt->fetch()) {
+                ?><a class="koelkasten" href="koelkast.php?id=<?php echo $row["id"] ?>"><?php
+                echo "<h3>" . $row['title'] . "\n", '</h3><br><img src="' . $row['foto'] . '" width="200" height="300"><br><h3>€' . $row['prijs'] . "\n" . '</h3><br>'; ?></a><br><br>
+                <?php
+            }
         }
         ?>
     </div>

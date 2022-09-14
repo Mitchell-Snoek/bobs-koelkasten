@@ -28,8 +28,10 @@ $pdo = new PDO($dsn, $user, $password);
     </nav>
 
     <div>
+        <h1>heel lang verhaal over het bedrijf</h1>
+        <a style="background: white; color: black;" href="https://en.wikipedia.org/wiki/Bob_Vance"><h1>over mij</h1></a>
         <?php
-        //echo koelkasten
+        //
         
         ?>
     </div>

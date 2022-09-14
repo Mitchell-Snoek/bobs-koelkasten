@@ -42,6 +42,24 @@ $pdo = new PDO($dsn, $user, $password);
         <h2 class="prijs">€<?php echo $row['prijs'];?></h2>
         <h2 class="energie">energie label <?php echo $row['energie'];?></h2>
         <h2 class="inhoud">inhoud:  <?php echo $row['inhoud'];?>L</h2>
+        <?php
+
+        $verzekering = $row['verzekert'];
+        $verzekeringen = str_split($verzekering);
+        foreach ($verzekeringen as $ver) {
+            if ($ver == " ") {
+                //
+            } elseif (empty($ver)) {
+                //
+            } else {
+                $get = "SELECT * FROM verzekeringen WHERE id = $ver";
+                $get = $pdo->prepare($get);
+                $get->execute();
+                $rows = $get->fetch(PDO::FETCH_ASSOC);
+                echo '<h2>' . $rows['naam'] . '</h2><h2>' . $rows['verzekering'] . '</h2>';
+            }
+        }
+        ?>
         <img src="<?php echo $row['foto'] ?>">
     </div>
 </body>

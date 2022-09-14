@@ -28,8 +28,20 @@ $pdo = new PDO($dsn, $user, $password);
     </nav>
 
     <div>
+    <h1>Contact pagina</h1>
+        <form method="post">
+            <h3>naam</h3>
+            <input name="naam" ></input>
+            <h3>email</h3>
+            <input type="email" name="email"></input>
+            <h3>waar wilt u contact over hebben</h3>
+            <input name="contact"></input>
+            <br>
+            <br>
+            <input type="submit" value="submit"></input>
+        </form>
         <?php
-        //echo koelkasten
+        //
         
         ?>
     </div>
