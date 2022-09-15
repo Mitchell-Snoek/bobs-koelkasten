@@ -43,18 +43,26 @@ $pdo = new PDO($dsn, $user, $password);
         <?php
         
         if (isset($_POST['submit'])) {
-            $naam = $_REQUEST['naam'];
-            $email = $_REQUEST['email'];
-            $contact = $_REQUEST['contact'];
-            $row =  "INSERT INTO `contact` (`naam`, `email`, `info`) VALUES
-            (:naam, :email, :info)";
-            $stmt = $pdo->prepare($row);
-            $stmt->execute([
-                ":naam" => $naam,
-                ":email" => $email,
-                ":info" => $contact
-            ]);
-            header("Refresh: 0; URL = index.php");
+            if (empty($_POST["naam"])) {
+                echo "naam is required";
+            } elseif (empty($_POST["email"])) {
+                echo "email is required";
+            } elseif (empty($_POST["contact"])) {
+                echo "contact is required";
+            } else {
+                $naam = $_REQUEST['naam'];
+                $email = $_REQUEST['email'];
+                $contact = $_REQUEST['contact'];
+                $row =  "INSERT INTO `contact` (`naam`, `email`, `info`) VALUES
+                (:naam, :email, :info)";
+                $stmt = $pdo->prepare($row);
+                $stmt->execute([
+                    ":naam" => $naam,
+                    ":email" => $email,
+                    ":info" => $contact
+                ]);
+                header("Refresh: 0; URL = index.php");
+            }
         }
         ?>
     </div>

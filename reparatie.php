@@ -58,16 +58,26 @@ $pdo = new PDO($dsn, $user, $password);
         $probleem = $_REQUEST['probleem'];
     }
     if (isset($_POST['submit'])) {
-        $row =  "INSERT INTO `reparaties` (`naam`, `adres`, `koelkast`, `probleem`) VALUES
-            (:naam, :adres, :koelkast, :probleem)";
-        $stmt = $pdo->prepare($row);
-        $stmt->execute([
-        ":naam" => $naam,
-        ":adres" => $adres,
-        ":koelkast" => $koelkast,
-        ":probleem" => $probleem
-        ]);
-        header("Refresh: 0; URL = index.php");
+        if (empty($_POST["naam"])) {
+            echo "naam is required";
+        } elseif (empty($_POST["adres"])) {
+            echo "adres is required";
+        } elseif (empty($_POST["koelkast"])) {
+            echo "koelkast type is required";
+        } elseif (empty($_POST["probleem"])) {
+            echo "probleem is required";
+        } else {
+            $row =  "INSERT INTO `reparaties` (`naam`, `adres`, `koelkast`, `probleem`) VALUES
+                (:naam, :adres, :koelkast, :probleem)";
+            $stmt = $pdo->prepare($row);
+            $stmt->execute([
+                ":naam" => $naam,
+                ":adres" => $adres,
+                ":koelkast" => $koelkast,
+                ":probleem" => $probleem
+            ]);
+            header("Refresh: 0; URL = index.php");
+        }
     }
     ?>
 </body>
