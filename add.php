@@ -146,22 +146,30 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 echo "artiekelnummer is required";
             } elseif (empty($_POST["datum"])) {
                 echo "datum is required";
+            } elseif (is_numeric($prijs) == false) {
+                echo "prijs moet een nummer zijn";
+            } elseif (is_numeric($inhoud) == false) {
+                echo "inhoud moet een nummer zijn";
+            } elseif (is_numeric($artiekelnummer) == false) {
+                echo "artiekelnummer moet een nummer zijn";
+            } elseif (is_numeric($voorraad) == false) {
+                echo "voorraad moet een nummer zijn";
             } else {
                 $row =  "INSERT INTO `koelkast` (`title`, `prijs`, `energie`, `inhoud`, `foto`, `verzekert`, `artiekelnummer`, `voorraad`, `datum`, `gebruikt`, `beschrijving`) VALUES
                 (:title, :prijs, :energie, :inhoud, :foto, :verzekert, :artiekelnummer, :voorraad, :datum, :gebruikt, :beschrijving)";
                 $stmt = $pdo->prepare($row);
                 $stmt->execute([
-                ":title" => $title,
-                ":prijs" => $prijs,
-                ":energie" => $energie,
-                ":inhoud" => $inhoud,
-                ":foto" => $foto,
-                ":verzekert" => $verzekeringen,
-                ":artiekelnummer" => $artiekelnummer,
-                ":voorraad" => $voorraad,
-                ":datum" => $datum,
-                ":gebruikt" => $status,
-                ":beschrijving" => $beschrijving
+                    ":title" => $title,
+                    ":prijs" => $prijs,
+                    ":energie" => $energie,
+                    ":inhoud" => $inhoud,
+                    ":foto" => $foto,
+                    ":verzekert" => $verzekeringen,
+                    ":artiekelnummer" => $artiekelnummer,
+                    ":voorraad" => $voorraad,
+                    ":datum" => $datum,
+                    ":gebruikt" => $status,
+                    ":beschrijving" => $beschrijving
                 ]);
                 header("Refresh: 0; URL = admin.php");
             }

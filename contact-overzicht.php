@@ -37,10 +37,10 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     <h1>reparaties</h1>
     <?php
 
-    $stmt = $pdo->query('SELECT * FROM reparaties');
+    $stmt = $pdo->query('SELECT * FROM contact');
     while ($row = $stmt->fetch()) {
         ?><a class="koelkasten"><?php
-        echo "<h3>" . $row['naam'] . "\n", '</h3><h3>' . $row['adres'] . '</h3><h3>' . $row['koelkast'] . '</h3><h3>' . $row['probleem'] . '</h3>'; ?></a><br><br>
+        echo "<h3>" . $row['naam'] . "\n", '</h3><h3>' . $row['email'] . '</h3><h3>' . $row['info'] . '</h3>'; ?></a><br><br>
         <?php
     }
     ?>

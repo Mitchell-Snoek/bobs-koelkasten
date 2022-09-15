@@ -27,7 +27,7 @@ $pdo = new PDO($dsn, $user, $password);
         </ul>
     </nav>
 
-    <div>
+    <div style="width: 100%;">
         <?php
 
         $id = $_GET["id"];
@@ -36,8 +36,6 @@ $pdo = new PDO($dsn, $user, $password);
         $query->execute();
         $row = $query->fetch(PDO::FETCH_ASSOC);
         ?>
-
-        <a href="index.php" name=""></a>
         <h2 class="title"><?php echo $row['title'];?></h2>
         <h2 class="prijs">€<?php echo $row['prijs'];?></h2>
         <h2 class="energie">energie label <?php echo $row['energie'];?></h2>
@@ -61,5 +59,10 @@ $pdo = new PDO($dsn, $user, $password);
         }
         ?>
         <img src="<?php echo $row['foto'] ?>">
+        <p class="beschrijving">beschrijving: <?php echo $row['beschrijving'];?></p>
+        <p class="gebruikt">status: <?php echo $row['gebruikt'];?></p>
+        <p class="voorraad">voorraad: <?php echo $row['voorraad'];?></p>
+        <p class="datum"><?php echo $row['datum'];?></p>
+        <p class="artiekelnummer">artiekelnummer: <?php echo $row['artiekelnummer'];?></p>
     </div>
 </body>

@@ -35,6 +35,7 @@ $pdo = new PDO($dsn, $user, $password);
         <input type="submit" name="aanpassen" value="aanpassen">
         <input type="submit" name="verwijderen" value="verwijderen">
         <input type="submit" name="reparaties" value="reparaties">
+        <input type="submit" name="contact" value="contact">
     </form>
 
 <?php
@@ -53,6 +54,10 @@ if (isset($_POST['toevoegen'])) {
 }
 if (isset($_POST['reparaties'])) {
     header('Refresh: 0; URL = reparatie-overzicht.php');
+    exit();
+}
+if (isset($_POST['contact'])) {
+    header('Refresh: 0; URL = contact-overzicht.php');
     exit();
 }
 ?>

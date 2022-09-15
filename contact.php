@@ -31,18 +31,31 @@ $pdo = new PDO($dsn, $user, $password);
     <h1>Contact pagina</h1>
         <form method="post">
             <h3>naam</h3>
-            <input name="naam" ></input>
+            <input name="naam"></input>
             <h3>email</h3>
             <input type="email" name="email"></input>
             <h3>waar wilt u contact over hebben</h3>
             <input name="contact"></input>
             <br>
             <br>
-            <input type="submit" value="submit"></input>
+            <input type="submit" value="submit" name="submit"></input>
         </form>
         <?php
-        //
         
+        if (isset($_POST['submit'])) {
+            $naam = $_REQUEST['naam'];
+            $email = $_REQUEST['email'];
+            $contact = $_REQUEST['contact'];
+            $row =  "INSERT INTO `contact` (`naam`, `email`, `info`) VALUES
+            (:naam, :email, :info)";
+            $stmt = $pdo->prepare($row);
+            $stmt->execute([
+                ":naam" => $naam,
+                ":email" => $email,
+                ":info" => $contact
+            ]);
+            header("Refresh: 0; URL = index.php");
+        }
         ?>
     </div>
 </body>
